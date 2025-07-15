@@ -106,7 +106,7 @@ function actualizarMalla() {
 
     const todosAprobados = cursos.every(c => c.estado === "aprobado");
     const titulo = document.createElement("h2");
-    titulo.textContent = `Semestre ${numero}`;
+titulo.textContent = semestre;
     if (todosAprobados) {
       titulo.style.textDecoration = "line-through";
     }
