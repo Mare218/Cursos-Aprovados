@@ -7,7 +7,7 @@ body {
 }
 
 /* Títulos de semestre en cursiva y con estilo */
-.semestre > h2 {
+h2 {
   font-family: 'Comic Sans MS', cursive, sans-serif; /* cursiva divertida y creativa */
   font-style: italic;
   font-weight: bold;
@@ -17,6 +17,13 @@ body {
   user-select: none;
   cursor: default;
 }
+
+/* Línea tachada si está aprobado todo */
+h2[style*="line-through"] {
+  color: #a0a0a0;
+  text-shadow: none;
+}
+
 
 /* Línea tachada si está aprobado todo */
 .semestre > h2[style*="line-through"] {
