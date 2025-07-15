@@ -126,6 +126,7 @@ function actualizarMalla() {
       if (curso.estado === "en-curso") {
         div.addEventListener("click", () => {
           curso.estado = "aprobado";
+          guardarEstados();
           actualizarMalla();
         });
       }
@@ -139,5 +140,23 @@ function actualizarMalla() {
   });
 }
 
-actualizarMalla();
+function guardarEstados() {
+  const estados = {};
+  Object.values(semestres).flat().forEach(curso => {
+    estados[curso.id] = curso.estado;
+  });
+  localStorage.setItem("estadosCursos", JSON.stringify(estados));
+}
 
+function cargarEstados() {
+  const estados = JSON.parse(localStorage.getItem("estadosCursos"));
+  if (!estados) return;
+  Object.values(semestres).flat().forEach(curso => {
+    if (estados[curso.id]) {
+      curso.estado = estados[curso.id];
+    }
+  });
+}
+
+cargarEstados();
+actualizarMalla();
